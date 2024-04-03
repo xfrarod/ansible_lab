@@ -1,0 +1,21 @@
+####################################################################################
+#
+#####################################################################################
+
+version: '2.0'
+
+services:
+
+  ansible:
+    container_name: ansible
+    image: k8sworkbench/ansible-container
+    restart: always
+    environment:
+      - ANSIBLE_CONFIG=/ansible.cfg
+    volumes:
+    - ./:/app
+    - ./.vagrant/:/.vagrant
+    - ./ansible.cfg:/ansible.cfg
+    - ./hosts:/hosts
+    command: tail -F anything
+    network_mode: host

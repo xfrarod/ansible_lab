@@ -1,0 +1,5 @@
+[webservers]
+host1 ansible_host=192.168.100.153 ansible_user=vagrant ansible_port=22 ansible_ssh_private_key_file=./.vagrant/machines/host1/virtualbox/private_key
+
+[dbservers]
+host2 ansible_host=192.168.100.173 ansible_user=vagrant ansible_port=22 ansible_ssh_private_key_file=./.vagrant/machines/host2/virtualbox/private_key
