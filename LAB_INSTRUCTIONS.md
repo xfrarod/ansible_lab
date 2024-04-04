@@ -9,26 +9,34 @@ El playbook deberá instalar nginx, siguiendo los siguientes pasos:
 #### Step 1 — Adding the EPEL Software Repository
 To add the CentOS 7 EPEL repository, first connect to your CentOS 7 machine via SSH, then use the yum command to install the extended package repository:
 
-> `$ sudo yum install epel-release`
+```shell
+sudo yum install epel-release
+```
 
 You’ll be prompted to verify that you want to install the software. Type y then ENTER to continue.
 
 #### Step 2 — Installing Nginx
 Now that the EPEL repository is installed on your server, install Nginx using the following yum command:
 
-> `$ sudo yum install nginx`
+```shell
+sudo yum install nginx
+```
 
 Again, answer yes to the verification prompt, then Nginx will finish installing.
 
 #### Step 3 — Starting Nginx
 Nginx will not start automatically after it is installed. To get Nginx running, use the systemctl command:
 
-> `$ sudo systemctl start nginx`
+```shell
+sudo systemctl start nginx
+```
 
 You can check the status of the service with systemctl status:
 
-> `$ sudo systemctl status nginx`
-
+```shell
+sudo systemctl status nginx
+```
+_Output:_
 ```shell
 [vagrant@host1 ~]$ sudo systemctl status nginx
 ● nginx.service - The nginx HTTP and reverse proxy server
@@ -68,12 +76,17 @@ Locate the desired version, and update it as needed in the link below:
 
 ![MySQL packages](images/mysql_packages.png)
 
-> `$ curl -sSLO https://dev.mysql.com/get/mysql80-community-release-el7-11.noarch.rpm`
+```shell
+curl -sSLO https://dev.mysql.com/get/mysql80-community-release-el7-11.noarch.rpm
+```
 
 Once the rpm file is saved, we will verify the integrity of the download by running md5sum and comparing it with the corresponding MD5 value listed on the site:
 
-> `$ md5sum mysql80-community-release-el7-11.noarch.rpm`
+```shell
+md5sum mysql80-community-release-el7-11.noarch.rpm
+```
 
+_Output:_
 ```shell
 $ md5sum mysql80-community-release-el7-11.noarch.rpm
 
@@ -88,8 +101,10 @@ Now that we’ve verified that the file wasn’t corrupted or changed, we’ll i
 
 Install the downloaded release package with the following command:
 
-> `$ sudo yum localinstall mysql80-community-release-el7-11.noarch.rpm`
-
+```shell
+sudo yum localinstall mysql80-community-release-el7-11.noarch.rpm
+```
+_Output:_
 ```shell
 [vagrant@host2 ~]$ sudo yum localinstall mysql80-community-release-el7-11.noarch.rpm
 Loaded plugins: fastestmirror
@@ -136,7 +151,9 @@ Complete!
 
 We can now use them to install MySQL server:
 
-> `$ sudo yum install mysql-server`
+```shell
+sudo yum install mysql-server
+```
 
 Press y to confirm that you want to proceed. Since we’ve just added the package, we’ll also be prompted to accept its GPG key. Press y to download it and complete the install.
 
@@ -144,14 +161,18 @@ Press y to confirm that you want to proceed. Since we’ve just added the packag
 
 We’ll start the daemon with the following command:
 
-> `$ sudo systemctl start mysqld`
-
+```shell
+sudo systemctl start mysqld
+```
 systemctl doesn’t display the outcome of all service management commands, so to be sure we succeeded, we’ll use the following command:
 
-> `$ sudo systemctl status mysqld`
+```shell
+sudo systemctl status mysqld
+```
 
 If MySQL has successfully started, the output should contain Active: active (running) and the final line should look something like:
 
+_Output:_
 ```shell
 [vagrant@host2 ~]$ sudo systemctl status mysqld
 
@@ -172,8 +193,12 @@ Apr 04 01:09:51 host2 systemd[1]: Started MySQL Server.
 
 #### Step 4 — Configuring MySQL
 During the installation process, a temporary password is generated for the MySQL root user. Locate it in the mysqld.log with this command:
-> `$ sudo grep 'temporary password' /var/log/mysqld.log`
 
+```shell
+sudo grep 'temporary password' /var/log/mysqld.log
+```
+
+_Output:_
 ```shell
 [vagrant@host2 ~]$ sudo grep 'temporary password' /var/log/mysqld.log
 
@@ -184,10 +209,13 @@ MySQL includes a security script to change some of the less secure default optio
 
 Use this command to run the security script.
 
-> `$ sudo mysql_secure_installation`
+```shell
+sudo mysql_secure_installation
+```
 
 This will prompt you for the default root password. As soon as you enter it, you will be required to change it.
 
+_Output:_
 ```shell
 [vagrant@host2 ~]$ sudo mysql_secure_installation
 
@@ -202,8 +230,6 @@ New password:
 Enter a new 12-character password that contains at least one uppercase letter, one lowercase letter, one number and one special character. Re-enter it when prompted.
 
 You’ll receive feedback on the strength of your new password, and then you’ll be immediately prompted to change it again. Since you just did, you can confidently say No:
-
-
 
 
 ## Entrega
