@@ -231,6 +231,47 @@ Enter a new 12-character password that contains at least one uppercase letter, o
 
 You’ll receive feedback on the strength of your new password, and then you’ll be immediately prompted to change it again. Since you just did, you can confidently say No:
 
+_Output:_
+```
+Estimated strength of the password: 100
+Change the password for root ? (Press y|Y for Yes, any other key for No) :
+```
+After we decline the prompt to change the password again, we’ll press Y and then ENTER to all the subsequent questions in order to remove anonymous users, disallow remote root login, remove the test database and access to it, and reload the privilege tables.
+
+Now that we’ve secured the installation, let’s test it.
+
+#### Step 5 — Testing MySQL
+
+We can verify our installation and get information about it by connecting with the mysqladmin tool, a client that lets you run administrative commands. Use the following command to connect to MySQL as root (-u root), prompt for a password (-p), and return the version.
+
+```shell
+mysqladmin -u root -p version
+```
+_Output:_
+```
+mysqladmin  Ver 8.0.28 for Linux on x86_64 (MySQL Community Server - GPL)
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Server version		8.0.28
+Protocol version	10
+Connection		Localhost via UNIX socket
+UNIX socket		/var/lib/mysql/mysql.sock
+Uptime:			3 min 2 sec
+```
+This indicates your installation has been successful.
+
 
 ## Entrega
 La entrega será a través de la plataforma de Canvas, y deberás subir cada uno de tus playbooks.
+
+
+## Referencias
+[Reference link Nginx Installation][nginx_installation] 
+[Reference link MySQL Installation][mysql_installation] 
+
+[nginx_installation]: https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7#step-3-starting-nginx
+[mysql_installation]: https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-centos-7
