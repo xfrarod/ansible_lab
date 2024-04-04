@@ -270,8 +270,10 @@ La entrega será a través de la plataforma de Canvas, y deberás subir cada uno
 
 
 ## Referencias
-[Reference link Nginx Installation][nginx_installation] 
-[Reference link MySQL Installation][mysql_installation] 
+
+- [Reference link Nginx Installation][nginx_installation] 
+
+- [Reference link MySQL Installation][mysql_installation] 
 
 [nginx_installation]: https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7#step-3-starting-nginx
 [mysql_installation]: https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-centos-7

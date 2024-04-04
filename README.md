@@ -9,11 +9,19 @@ Los archivos en este repositorio fueron creados con proposito educativo para el 
 
 ## Instrucciones para levantar el ambiente
 1. Levantar las maquinas virtuales de VirtualBox con Vagrant
-> `vagrant up`
-2. Validar las direcciones IP asignadas a cada una de las máquinas virtuales para actualizar el archivo hosts utilizando el comando:
-> `vagrant ssh host1 -c ifconfig`
 
 ```shell
+vagrant up
+```
+
+2. Validar las direcciones IP asignadas a cada una de las máquinas virtuales para actualizar el archivo hosts utilizando el comando:
+
+```shell
+vagrant ssh host1 -c ifconfig
+```
+
+_Output:_
+```
 vagrant ssh host1 -c ifconfig
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
@@ -49,11 +57,17 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
     host2 ansible_host=**192.168.100.118** ansible_user=vagrant ansible_port=22 ansible_ssh_private_key_file=./.vagrant/machines/host2/virtualbox/private_key
 
 4. Levantar el contenedor docker de ansible utilizando docker-compose
-> `docker-compose up -d`
+
+```shell
+docker-compose up -d
+```
 
 5. Dado que las llaves privadas para la conexión ssh de los servidores es un mapeo de archivos en el contenedor de docker, es necesario cambiar los permisos para que no esten muy abiertos. 
 > `chmod 400 /.vagrant/machines/host1/virtualbox/private_key`
 > `chmod 400 /.vagrant/machines/host2/virtualbox/private_key`
 
 6. Validar que el ambiente esta corriendo y ansible se puede comunicar a los nodos
-> `ansible all -m ping`
+
+```shell
+ansible all -m ping
+```
